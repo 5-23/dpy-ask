@@ -111,6 +111,16 @@ python -m pip install -U pip
   client.run('토큰을 입력하세요')
   ```
   * 이런식으로 작성해야 잘 작동합니다.
+
+### commands와 on_message 같이쓰기
+기본적으로 bot.commands와 on_message는 같이 사용할수 없습니다! 만약 같이 쓸경우 둘중1개만 작동하죠..
+같이쓰기 위해서는 on_meessage함수에 다음과 같은 식으로 코드를 추가해줘야합니다
+```
+@bot.event
+async on_message(message):
+    # 여기에 여러분의 코드를 넣어주세요 :D
+    await bot.process_commands(message)
+
 ### 구글링 하는 방법
   * 구글링을 하는 방법은 간단합니다. 다음은 오류가 나서 어떻게 고칠지 구글링을 하는 잘 된 예시입니다.
     - `python discord.py intents` [사용하는 언어 + 사용하는 모듈 + 기능 아니면 오류코드]으로 검색하시면 됩니다.
